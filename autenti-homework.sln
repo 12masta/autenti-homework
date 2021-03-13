@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autenti-homework", "autenti-homework\autenti-homework.csproj", "{18362B1D-32D5-446C-9716-A2C7F182628E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18362B1D-32D5-446C-9716-A2C7F182628E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18362B1D-32D5-446C-9716-A2C7F182628E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18362B1D-32D5-446C-9716-A2C7F182628E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18362B1D-32D5-446C-9716-A2C7F182628E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

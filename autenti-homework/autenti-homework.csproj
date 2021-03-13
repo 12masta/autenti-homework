@@ -5,4 +5,9 @@
         <RootNamespace>autenti_homework</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="FluentAssertions" Version="5.10.3" />
+      <PackageReference Include="xunit" Version="2.4.1" />
+    </ItemGroup>
+
 </Project>

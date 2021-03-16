@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using autenti_homework.Helpers;
+using autenti_homework.PageObjects.Register;
 using FluentAssertions;
 using Xunit;
 
@@ -10,21 +11,22 @@ namespace autenti_homework
         [Fact]
         public async Task IsPageLoaded()
         {
-            await Page.GoToAsync(TestConstants.Url + "/register");
-            Page.Url.Should().Be(TestConstants.Url + "/register");
+            var registerPage = await RegisterPageFactory.Create(Page).Load();
+
+            registerPage.Url.Should().Be(TestConstants.Url + "/register");
         }
 
         [Theory]
         [InlineData("example@email.com")]
         public async Task ShouldGoToTheNextStepOnClickWithValidEmail(string email)
         {
-            await Page.GoToAsync(TestConstants.Url + "/register");
-            await Page.TypeAsync("//*[@id='standard']", email);
-            await Page.ClickAsync("//*[@type='submit']");
+            var registerPage = await RegisterPageFactory.Create(Page).Load();
+            await registerPage.FillEmail(email);
+            var accountTypePage = await registerPage.ClickCreateFreeAccount();
 
-            Page.Url.Should().Be(TestConstants.Url + "/register/account-type");
+            accountTypePage.Url.Should().Be(TestConstants.Url + "/register/account-type");
         }
-        
+
         [Theory]
         [InlineData("@email.com")]
         [InlineData("example@")]
@@ -33,11 +35,11 @@ namespace autenti_homework
         [InlineData("exampleemail.com")]
         public async Task ShouldNotGoToTheNextStepOnClickWithInvalidEmail(string email)
         {
-            await Page.GoToAsync(TestConstants.Url + "/register");
-            await Page.TypeAsync("//*[@id='standard']", email);
-            await Page.ClickAsync("//*[@type='submit']");
+            var registerPage = await RegisterPageFactory.Create(Page).Load();
+            await registerPage.FillEmail(email);
+            var accountTypePage = await registerPage.ClickCreateFreeAccount();
 
-            Page.Url.Should().Be(TestConstants.Url + "/register");
+            accountTypePage.Url.Should().Be(TestConstants.Url + "/register");
         }
     }
 }

@@ -6,12 +6,10 @@ using PlaywrightSharp;
 
 namespace autenti_homework.Helpers
 {
-    public class TestConstants
+    public static class TestConstants
     {
-        public const string BaseUrl = "https://account.autenti.com";
-        public const string ChromiumProduct = "CHROMIUM";
-        public const string WebkitProduct = "WEBKIT";
-        public const string FirefoxProduct = "FIREFOX";
+        private const string BaseUrl = "https://account.autenti.com";
+        private const string ChromiumProduct = "CHROMIUM";
 
         public static string Product => string.IsNullOrEmpty(Environment.GetEnvironmentVariable("PRODUCT"))
             ? ChromiumProduct
@@ -21,7 +19,7 @@ namespace autenti_homework.Helpers
             ? BaseUrl
             : Environment.GetEnvironmentVariable("BASEURL");
 
-        internal static LaunchOptions GetDefaultBrowserOptions()
+        public static LaunchOptions GetDefaultBrowserOptions()
             => new LaunchOptions
             {
                 SlowMo = Convert.ToInt32(Environment.GetEnvironmentVariable("SLOW_MO")),
@@ -37,10 +35,5 @@ namespace autenti_homework.Helpers
         }
 
         internal static ILoggerFactory LoggerFactory { get; set; } = LoggerFactory = new LoggerFactory();
-        internal static readonly bool IsWebKit = Product.Equals(WebkitProduct);
-        internal static readonly bool IsFirefox = Product.Equals(FirefoxProduct);
-        internal static readonly bool IsChromium = Product.Equals(ChromiumProduct);
-        internal static readonly bool IsMacOSX = RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
-        internal static readonly bool IsWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
     }
 }

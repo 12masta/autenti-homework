@@ -25,7 +25,7 @@ namespace autenti_homework.Helpers
             try
             {
                 Playwright = await PlaywrightSharp.Playwright.CreateAsync(TestConstants.LoggerFactory, debug: "pw*");
-                Browser = await Playwright[TestConstants.Product].LaunchAsync(TestConstants.GetHeadfulOptions());
+                Browser = await Playwright[TestConstants.Product].LaunchAsync(TestConstants.GetDefaultBrowserOptions());
             }
             catch (Exception ex)
             {
